@@ -1,0 +1,106 @@
+openapi: 3.0.0
+info:
+  title: Cat CRUD API
+  version: 1.0.0
+  description: API for CRUD operations on Cat resources
+tags:
+  - name: Dogs
+    description: Operations related to dogs
+  - name: Cats
+    description: Operations related to cats
+paths:
+  /pets/cats:
+    get:
+      tags:
+        - Cat
+      summary: Retrieve all cats
+      operationId: getCats
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cat'
+    post:
+      tags:
+        - Cat
+      summary: Create a new cat
+      operationId: createCat
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+      responses:
+        '201':
+          description: Cat created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+  /pets/cats/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the cat
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+        - Cat
+      summary: Retrieve a cat by ID
+      operationId: getCatById
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+    put:
+      tags:
+        - Cat
+      summary: Update a cat by ID
+      operationId: updateCatById
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cat'
+      responses:
+        '200':
+          description: Cat updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cat'
+    delete:
+      tags:
+        - Cat
+      summary: Delete a cat by ID
+      operationId: deleteCatById
+      responses:
+        '204':
+          description: Cat deleted successfully
+components:
+  schemas:
+    Cat:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        age:
+          type: integer
+        breed:
+          type: string

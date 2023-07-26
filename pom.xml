@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.1.0</version>
+  </parent>
+
+  <groupId>hope.dwag.example</groupId>
+  <artifactId>openapi-first-springboot-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Parent for server and client demo</name>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>client</module>
+    <module>server</module>
+  </modules>
+
+  <properties>
+    <java.version>17</java.version>
+    <openapi.generator.version>5.4.0</openapi.generator.version>
+    <javax.ws.rs-api.version>2.1.1</javax.ws.rs-api.version>
+    <lombok.version>1.18.26</lombok.version>
+    <jackson-databind-nullable.version>0.2.6</jackson-databind-nullable.version>
+    <validation-api.version>2.0.1.Final</validation-api.version>
+    <swagger-annotations.version>2.2.8</swagger-annotations.version>
+    <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+    <javax.servlet-api.version>4.0.1</javax.servlet-api.version>
+    <jackson-dataformat-yaml.version>2.12.5</jackson-dataformat-yaml.version>
+    <springdoc-openapi-ui.version>1.7.0</springdoc-openapi-ui.version>
+    <springdoc-openapi-starter-webmvc-ui.version>2.1.0</springdoc-openapi-starter-webmvc-ui.version>
+    <maven.dependancy.version>3.4.0</maven.dependancy.version>
+    <jackson-databind-nullable.version>0.2.1</jackson-databind-nullable.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>${maven.dependancy.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

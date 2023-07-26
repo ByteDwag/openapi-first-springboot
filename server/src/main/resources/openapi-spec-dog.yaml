@@ -1,0 +1,103 @@
+openapi: 3.0.0
+info:
+  title: Dog CRUD API
+  version: 1.0.0
+  description: API for CRUD operations on Dog resources
+tags:
+  - name: Dogs
+    description: Operations related to dogs
+paths:
+  /pets/dogs:
+#    TODO we use tags
+    get:
+      tags:
+        - Dog
+      summary: Retrieve all dogs
+      operationId: getDogs
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Dog'
+    post:
+      tags:
+        - Dog
+      summary: Create a new dog
+      operationId: createDog
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dog'
+      responses:
+        '201':
+          description: Dog created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+  /pets/dogs/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the dog
+        required: true
+        schema:
+          type: integer
+    get:
+      tags:
+        - Dog
+      summary: Retrieve a dog by ID
+      operationId: getDogById
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+    put:
+      tags:
+        - Dog
+      summary: Update a dog by ID
+      operationId: updateDogById
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Dog'
+      responses:
+        '200':
+          description: Dog updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dog'
+    delete:
+      tags:
+        - Dog
+      summary: Delete a dog by ID
+      operationId: deleteDogById
+      responses:
+        '204':
+          description: Dog deleted successfully
+components:
+  schemas:
+    Dog:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        dateOfBirth:
+          type: string
+          format: date
+        breed:
+          type: string
